@@ -22,8 +22,13 @@ resource "aws_mwaa_environment" "mwaa" {
 
   source_bucket_arn     = local.source_bucket_arn
   webserver_access_mode = var.webserver_access_mode
-  min_webservers        = var.min_webservers
-  max_webservers        = var.max_webservers
+
+  lifecycle {
+    ignore_changes = [webserver_access_mode]
+  }
+
+  min_webservers = var.min_webservers
+  max_webservers = var.max_webservers
 
   weekly_maintenance_window_start = var.weekly_maintenance_window_start
   endpoint_management             = var.endpoint_management
