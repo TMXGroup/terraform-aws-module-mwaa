@@ -131,8 +131,8 @@ variable "webserver_access_mode" {
   default     = "PRIVATE_ONLY"
 
   validation {
-    condition     = contains(["PRIVATE_ONLY", "PUBLIC_ONLY"], var.webserver_access_mode)
-    error_message = "Invalid input, options: \"PRIVATE_ONLY\", \"PUBLIC_ONLY\"."
+    condition     = contains(["PRIVATE_ONLY", "PUBLIC_ONLY", "PUBLIC_AND_PRIVATE"], var.webserver_access_mode)
+    error_message = "Invalid input, options: \"PRIVATE_ONLY\", \"PUBLIC_ONLY\", \"PUBLIC_AND_PRIVATE\"."
   }
 }
 
