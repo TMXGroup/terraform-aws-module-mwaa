@@ -126,13 +126,13 @@ variable "schedulers" {
 }
 
 variable "webserver_access_mode" {
-  description = "(Optional) Specifies whether the webserver should be accessible over the internet or via your specified VPC. Possible options: PRIVATE_ONLY (default) and PUBLIC_ONLY"
+  description = "(Optional) Specifies whether the webserver should be accessible over the internet or via your specified VPC. Possible options: PRIVATE_ONLY (default), PUBLIC_ONLY and PUBLIC_AND_PRIVATE"
   type        = string
   default     = "PRIVATE_ONLY"
 
   validation {
-    condition     = contains(["PRIVATE_ONLY", "PUBLIC_ONLY"], var.webserver_access_mode)
-    error_message = "Invalid input, options: \"PRIVATE_ONLY\", \"PUBLIC_ONLY\"."
+    condition     = contains(["PRIVATE_ONLY", "PUBLIC_ONLY", "PUBLIC_AND_PRIVATE"], var.webserver_access_mode)
+    error_message = "Invalid input, options: \"PRIVATE_ONLY\", \"PUBLIC_ONLY\", \"PUBLIC_AND_PRIVATE\"."
   }
 }
 
